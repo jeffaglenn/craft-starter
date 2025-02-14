@@ -1,0 +1,17 @@
+{######################
+TEMPLATE SETTINGS
+######################}
+
+{# Extends #}
+{% extends "_layout/_main" %}
+
+{# Setting page classes #}
+{% set bodyClass = entry.section.handle ~ '-' ~ entry.type %}
+
+{######################
+END TEMPLATE SETTINGS
+######################}
+
+{% block body %}
+    {{ entry.title }}
+{% endblock %}

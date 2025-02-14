@@ -1,0 +1,8 @@
+/* Import Tailwind pointing the source at the directory root */
+@import "tailwindcss" source("../../");
+
+/* Tailwind variable overrides */
+@import "./defaults.css";
+
+/* Starts custom CSS */
+@import "./base.css";

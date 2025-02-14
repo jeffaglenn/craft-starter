@@ -1,0 +1,51 @@
+@theme {
+    /* Colors */
+    --color-black: #000000;
+    --color-white: #FFFFFF;
+
+    /* --color-gray-50: oklch(0.985 0.001 106.423);
+    --color-gray-100: oklch(0.97 0.001 106.424);
+    --color-gray-200: oklch(0.923 0.003 48.717);
+    --color-gray-300: oklch(0.869 0.005 56.366);
+    --color-gray-400: oklch(0.709 0.01 56.259);
+    --color-gray-500: oklch(0.553 0.013 58.071);
+    --color-gray-600: oklch(0.444 0.011 73.639);
+    --color-gray-700: oklch(0.374 0.01 67.558);
+    --color-gray-800: oklch(0.268 0.007 34.298);
+    --color-gray-900: oklch(0.216 0.006 56.043);
+    --color-gray-950: oklch(0.147 0.004 49.25); */
+
+    /* Spacing */
+    --spacing-p25: 0.25rem;
+    --spacing-p5 : 0.5rem;
+    --spacing-p75: 0.75rem;
+    --spacing    : 1rem;
+
+    /* Font Families */
+    --font-arial  : "Arial",         sans-serif;
+    --font-cursive: "Comic Sans MS", cursive, sans-serif;
+
+    /* Text Sizes */
+    --text-1  : 1rem;
+    --text-1p2: 1.2rem;
+    --text-1p4: 1.4rem;
+    --text-1p6: 1.6rem;
+    --text-1p8: 1.8rem;
+    --text-2  : 2rem;
+    --text-2p2: 2.2rem;
+    --text-2p4: 2.4rem;
+    --text-2p6: 2.6rem;
+    --text-2p8: 2.8rem;
+    --text-3  : 3rem;
+    --text-3p2: 3.2rem;
+    --text-3p4: 3.4rem;
+    --text-3p6: 3.6rem;
+    --text-3p8: 3.8rem;
+    --text-4  : 4rem;
+    --text-5  : 5rem;
+    --text-6  : 6rem;
+    --text-7  : 7rem;
+    --text-8  : 8rem;
+    --text-9  : 9rem;
+    --text-10 : 10rem;
+}

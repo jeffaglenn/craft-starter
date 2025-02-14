@@ -1,0 +1,88 @@
+dateModified: 1739569968
+email:
+  fromEmail: $SYSTEM_EMAIL
+  fromName: $SYSTEM_NAME
+  replyToEmail: $SYSTEM_REPLY_EMAIL
+  template: null
+  transportSettings:
+    command: '/usr/local/bin/mailpit sendmail -t --smtp-addr 127.0.0.1:1025'
+  transportType: craft\mail\transportadapters\Sendmail
+meta:
+  __names__:
+    2e3c2999-5000-423e-b8db-f25ced8d87a9: 'Craft Starter' # Craft Starter
+    7b5134ba-6837-46ef-a1c1-3d64253e089e: Sites # Sites
+    9d539a9e-ff0a-41c5-a781-0c6988d155ff: New # New
+    12699418-de14-4bfb-ba48-67f9f477b478: 'Contact Form' # Contact Form
+    f2d4d54a-4662-40d2-9202-8443a43c2ac9: Simple # Simple
+plugins:
+  ckeditor:
+    edition: standard
+    enabled: true
+    schemaVersion: 3.0.0.0
+  dashboard-begone:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  embeddedassets:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  formie:
+    edition: standard
+    enabled: true
+    licenseKey: $FORMIE
+    schemaVersion: 3.4.8
+  hyper:
+    edition: standard
+    enabled: true
+    licenseKey: $HYPER
+    schemaVersion: 1.0.0
+  image-optimize:
+    edition: standard
+    enabled: true
+    licenseKey: $IMAGE_OPTIMIZE
+    schemaVersion: 1.0.0
+  image-resizer:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.0.0
+  mailgun:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  retcon:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  retour:
+    edition: standard
+    enabled: true
+    licenseKey: $RETOUR
+    schemaVersion: 3.0.12
+  seomatic:
+    edition: standard
+    enabled: true
+    licenseKey: $SEOMATIC
+    schemaVersion: 3.0.12
+  sprig:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.1
+  vite:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+system:
+  edition: solo
+  live: true
+  name: $SYSTEM_NAME
+  retryDuration: null
+  schemaVersion: 5.6.0.2
+  timeZone: America/Los_Angeles
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: null
+  photoVolumeUid: null
+  require2fa: false
+  requireEmailVerification: true

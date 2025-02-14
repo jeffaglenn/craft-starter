@@ -1,0 +1,25 @@
+{
+    "name": "craft-starter",
+    "version": "1.0.0",
+    "author": "Jeff Glenn",
+    "license": "ISC",
+    "description": "Starter Project for Craft CMS 5 using Vite 6 and Tailwind 4",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
+    },
+    "devDependencies": {
+        "vite": "^6.1.0"
+    },
+    "dependencies": {
+        "@tailwindcss/vite": "^4.0.6",
+        "alpinejs": "^3.14.8",
+        "tailwindcss": "^4.0.6",
+        "swiper": "^11.1.14",
+        "gsap": "npm:@gsap/shockingly@^3.12.5",
+        "@fancyapps/ui": "^5.0.36",
+        "vite-plugin-restart": "^0.4.2"
+    }
+}

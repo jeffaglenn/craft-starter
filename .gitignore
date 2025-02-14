@@ -1,0 +1,35 @@
+# System Files
+Thumbs.db
+/.idea
+.DS_Store
+
+# Composer
+vendor
+
+# Dotenv
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# npm
+node_modules
+.npmrc
+
+# Craft files
+backups
+composer-backups
+config-backups
+logs
+runtime
+web/cpresources
+
+# Ignore frontend files
+web/uploads
+web/assets
+web/dist
+
+# temporary build files
+.tmp

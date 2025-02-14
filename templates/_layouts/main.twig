@@ -1,0 +1,57 @@
+{######################
+TEMPLATE SETTINGS
+######################}
+
+{# Import Macros #}
+{# {% import '_macros/_typography' as typography %} #}
+
+{######################
+END TEMPLATE SETTINGS
+######################}
+
+<!DOCTYPE html>
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    lang="en-US"
+    class="{% if htmlClass is defined %}{{ htmlClass }}{% endif %}"
+>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="home" href="{{ siteUrl }}" />
+
+        {# Favicon Meta goes here #}
+        {# <link rel="icon" type="image/png" href="/images/favicon/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/svg+xml" href="/images/favicon/favicon.svg" />
+        <link rel="shortcut icon" href="/images/favicon/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png" />
+        <meta name="apple-mobile-web-app-title" content="Orpheum Theatre Group" />
+        <link rel="manifest" href="/images/favicon/site.webmanifest" /> #}
+
+        {{ craft.vite.script("src/app.js", false) }}
+
+        {# Font embeds here #}
+
+        {% block head %}{% endblock head %}
+    </head>
+
+    <body class="{{ bodyClass | default() }}">
+
+        <a class="sr-only focus:not-sr-only" href="#main-content">{{ "Skip to main content"|t }}</a>
+
+        {# {{ svg("@webroot/dist/spritemap.svg", sanitize=false, namespace=false) | attr({ style: 'display: none' }) }} #}
+
+        {% include "_includes/_global/_header" %}
+        <main id="main-content" role="main">
+            {% block body %}{% endblock %}
+        </main>
+        {% include "_includes/_global/_footer" %}
+
+        {# For when you need to do inline javascript after the main.js loads #}
+        {% block footer %}{% endblock %}
+
+        {# https://instant.page #}
+        <script src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
+    </body>
+</html>

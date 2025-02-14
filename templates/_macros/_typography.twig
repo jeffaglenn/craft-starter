@@ -1,0 +1,84 @@
+{####################################
+Allows for consistent heading styles
+####################################}
+{% macro headingClasses(type) %}
+    {% switch type|lower %}
+        {% case "h1" %}
+            text-[clamp(3.5rem,5vw,5.5rem)]
+        {% case "h2" %}
+            text-[clamp(3rem,4vw,4rem)]
+        {% case "h3" %}
+            text-[clamp(2.25rem,3vw,3.5rem)]
+        {% case "h4" %}
+            text-[clamp(1.8rem,3vw,2.75rem)]
+    {% endswitch %}
+{% endmacro %}
+
+
+
+{####################################
+Adds tailwind classes using mmikkel/retcon plugin
+to basic rich text elements so they can be styled.
+####################################}
+{% macro richText(fieldName) %}
+    {{ fieldName | retcon([
+        ['attr', 'h2', {
+            class: _self.headingClasses('h2') ~ 'mb-2'
+        }, false],
+        ['attr', 'h3', {
+            class: _self.headingClasses('h3') ~ 'mb-2'
+        }, false],
+        ['attr', 'p', {
+            class: 'my-2'
+        }, false],
+        ['attr', 'strong', {
+            class: 'font-semibold'
+        }, false],
+        ['attr', 'p:first-child', {
+            class: 'mt-0'
+        }, false],
+        ['attr', 'p:last-child', {
+            class: 'mb-0'
+        }, false],
+        ['attr', 'p.small-heading + h2', {
+            class: '!-mt-[1.5rem]'
+        }, false],
+        ['attr', 'ul', {
+            class: 'list-disc ml-4 my-2'
+        }],
+        ['attr', 'ol', {
+            class: 'list-decimal ml-4 my-2'
+        }],
+        ['attr', 'li', {
+            class: 'my-p5'
+        }],
+        ['attr', 'ul ul, ul ol, ol ul, ol ol', {
+            class: 'my-p5'
+        }, false],
+        ['attr', 'blockquote', {
+            class: 'text-gold italic border-l-2 sm:border-l-4 border-gold pl-2 sm:pl-4 my-4'
+        }],
+        ['attr', 'div[data-oembed-url]', {
+            style: false,
+            class: 'mx-0 my-4 md:m-4'
+        }],
+        ['attr', 'div[data-oembed-url] > div', {
+            style: false,
+            class: 'w-full aspect-video'
+        }],
+        ['attr', 'sup', {
+            class: 'text-[50%] -top-[1em]'
+        }],
+        ['attr', 'sub', {
+            class: 'text-[50%]'
+        }],
+        ['attr', 'a:not(.btn-arrow-hover)', {
+            class: 'link',
+        }, false
+        ],
+        ['attr', 'figure.table', {
+            class: 'tableWrapper my-4',
+        }],
+        ['wrap', 'hr', 'div.decorative-hr'],
+    ]) }}
+{% endmacro %}
