@@ -13,6 +13,7 @@ use_dns_when_possible: true
 composer_version: "2"
 web_environment: []
 corepack_enable: false
+webimage_extra_packages: [jpegoptim, optipng, gifsicle, webp]
 web_extra_exposed_ports:
     - name: craft-starter
       container_port: 3000
