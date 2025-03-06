@@ -18,9 +18,9 @@
 
 ## Plugins
 
-- Fancy Apps
-- GSAP
-- Swiper
+- [Fancy Apps](https://fancyapps.com)
+- [GSAP](https://gsap.com)
+- [Swiper](https://swiperjs.com)
 
 ### Craft CMS Plugins ready to install
 
