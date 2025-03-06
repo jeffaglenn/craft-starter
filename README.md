@@ -18,7 +18,11 @@
 
 ## Plugins
 
-### Craft CMS
+- Fancy Apps
+- GSAP
+- Swiper
+
+### Craft CMS Plugins ready to install
 
 - CKEditor
 - Formie

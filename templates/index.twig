@@ -1,60 +1,14 @@
-<!DOCTYPE html>
-<html lang="en-US">
-<head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta charset="utf-8" />
-    <title>Welcome to Craft CMS</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    <meta name="referrer" content="origin-when-cross-origin" />
+{######################
+TEMPLATE SETTINGS
+######################}
 
-    {{ craft.vite.script("src/app.js", false) }}
+{# Extends #}
+{% extends "_layouts/main" %}
 
-</head>
-<body class="ltr">
-<div class="wrapper">
-    <div id="modal">
-        <div class="mb-2">
-            <div id="" class="">
-                <h1 class="font-cursive">Welcome <span>to the site</span></h1>
-                <p class="">Thanks for installing Craft CMS!</p>
-                <p>You’re looking at the <code>index.twig</code> template file located in your
-                    <code>templates/</code> folder. Once you’re ready to start building out your site’s
-                    front end, you can replace this with something custom.</p>
-                <p>If you’re new to Craft CMS, take some time to check out the resources on the right
-                    when you get a chance&mdash;especially
-                    <a href="https://craftcms.com/discord" target="_blank">Discord</a>
-                    and <a href="http://craftcms.stackexchange.com/" target="_blank">Stack Exchange</a>.
-                    The Craft community is full of smart, friendly, and helpful people!</p>
-                <p><span class="go"><a href="{{ cpUrl('') }}">Go to your control panel</a></span></p>
-                    <button>BUTTON</button>
-            </div>
+{######################
+END TEMPLATE SETTINGS
+######################}
 
-            <div class="h-[200px] overflow-scroll bg-blue-50 p-4 hide-scrollbar">
-                Pariatur architecto et rerum delectus tempora dolores. Est perferendis sit veritatis molestiae omnis quibusdam corrupti odio aliquam sed odit exercitationem fuga nulla. Nihil architecto occaecati consectetur iste maiores sapiente deserunt quia rerum consequatur voluptatum corrupti.
-
-Et sed voluptas in voluptatem dolor odio non aliquid eos id ut suscipit. Omnis mollitia modi in maxime voluptatum dolorum delectus possimus doloremque maxime quaerat mollitia. Doloremque sed commodi quaerat deserunt et voluptatem similique rerum et officia similique libero. Dolor provident commodi doloremque porro eveniet et hic voluptas rerum animi eveniet blanditiis aut. Rerum consectetur eos quia quia hic totam inventore id.
-
-Sit nisi mollitia dolor minus unde. Harum saepe possimus dolores est consequatur deleniti iure eveniet sed debitis asperiores et quis. Maiores nostrum vitae doloremque aut molestias sed quisquam. Illo numquam illo officiis eius ea natus officiis mollitia et nesciunt a tempore sed omnis nemo. Nihil qui ea mollitia animi.
-
-Voluptate amet illum quibusdam voluptates eius repellendus ut maxime voluptas dolores accusamus illum voluptas nihil.
-
-Facere necessitatibus explicabo iure hic veritatis consequuntur et. Minus non est blanditiis repudiandae et quos magnam repellendus aliquam non est quidem voluptas omnis. Ducimus dicta qui laboriosam eligendi veritatis consequatur. Et et sed dolor autem omnis accusamus odio in quia nihil. Quae architecto eveniet cumque omnis recusandae aliquam iusto. Et corporis occaecati ullam voluptatibus voluptates excepturi quidem voluptatem quod omnis.
-
-Facere dolore dolorem enim architecto. Rerum hic modi molestiae.
-
-Quam cupiditate nihil soluta qui accusamus labore optio architecto ad nihil.
-
-Non officia placeat quis beatae accusamus excepturi aliquam debitis voluptatum vel est. Eveniet libero iure rerum itaque non impedit modi ut sint eaque sed qui doloribus qui quaerat. Qui explicabo et aliquam cupiditate possimus libero porro consectetur molestias dolorem velit eveniet repellat.
-
-Et quidem sunt enim aut omnis at dignissimos molestias magni vero accusantium assumenda consequatur. Ipsa facilis voluptas perferendis eligendi consequuntur natus ipsam rerum vitae nam odio. Quaerat vero est minima repellat rerum sunt. Modi excepturi laudantium fugiat facere cupiditate culpa fugit et asperiores rerum exercitationem.
-
-Placeat ut quam a. Voluptatibus quia et et facilis soluta voluptas consequatur aperiam quis quo itaque aperiam distinctio repellat. Molestias quia perferendis esse deleniti accusamus illum perferendis aperiam laborum recusandae asperiores quos. Dicta est maxime aperiam pariatur incidunt nostrum libero molestiae est dolorem quo minus ipsa est. Sint soluta expedita temporibus nobis earum. Laboriosam voluptate ab et.
-            </div>
-
-            <img src="{{ craft.vite.asset("test.jpg", true) }}" alt="">
-        </div>
-
-    </div>
-</div>
-</body>
-</html>
+{% block body %}
+    <h1>Welcome to the Project. Delete this file and get started.</h1>
+{% endblock %}
