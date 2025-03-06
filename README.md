@@ -25,15 +25,15 @@
 ### Craft CMS Plugins ready to install
 
 - CKEditor
-- Formie
-- Mailgun
-- SEOMatic
-- Image Optimize
-- Retour
-- Hyper
-- Retcon
-- Image Resizer
 - Dashboard Be Gone
 - Embedded Assets
+- Formie
+- Hyper
+- Image Optimize
+- Image Resizer
+- Mailgun
+- Retcon
+- Retour
+- SEOMatic
 - Sprig
 - Vite
