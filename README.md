@@ -22,7 +22,7 @@
 - [GSAP](https://gsap.com)
 - [Swiper](https://swiperjs.com)
 
-### Craft CMS Plugins ready to install
+## Craft CMS Plugins ready to install
 
 - CKEditor
 - Dashboard Be Gone
