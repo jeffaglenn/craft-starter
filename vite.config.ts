@@ -1,9 +1,10 @@
-/** @type {import('vite').UserConfig} */
+import { defineConfig } from 'vite'
 
 import tailwindcss from '@tailwindcss/vite'
 import ViteRestart from 'vite-plugin-restart';
+import viteCompression from 'vite-plugin-compression';
 
-export default ({command}) => ({
+export default defineConfig (({ command }) => ({
     base: command === 'serve' ? '' : '/dist/',
     publicDir: 'src/public',
     build: {
@@ -19,6 +20,9 @@ export default ({command}) => ({
     },
     plugins: [
         tailwindcss(),
+        viteCompression({
+            filter: /\.(js|mjs|json|css|map)$/i
+        }),
         ViteRestart({
             reload: [
                 'templates/**/*',
@@ -27,11 +31,14 @@ export default ({command}) => ({
     ],
     server: {
         host: '0.0.0.0',
-        port: 3000,
+        port: 5173,
         strictPort: true,
-        origin: `${process.env.DDEV_PRIMARY_URL.replace(/:\d+$/, "")}:3000`,
+        origin: "https://craft-starter.ddev.site:5173",
         cors: {
             origin: /https?:\/\/([A-Za-z0-9\-\.]+)?(\.ddev\.site)(?::\d+)?$/,
         },
+        watch: {
+            ignored: ['./storage/**', './vendor/**', './node_modules/**', './web/**'],
+        }
     }
-});
+}));
