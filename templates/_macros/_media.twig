@@ -1,0 +1,84 @@
+{####################################
+Renders Alt Text for images to be used in the Responsive Image Macro
+Looks for Alt Text field > Caption field > defaults to Title
+####################################}
+{% macro altText(fieldName) %}
+    alt="{{ fieldName.alt ??? fieldName.caption ??? fieldName.title }}"
+{% endmacro %}
+
+
+
+{####################################
+Responsive Image Macro with default options
+####################################}
+{% macro responsiveImage(image, optimizedImage, options = {}) %}
+    {# Set default options #}
+    {% set defaultOptions = {
+        lazy          : true,
+        caption       : false,
+        captionInside : false,
+        sizes         : '100vw',
+        imageClasses  : [],
+        figureClasses : [],
+        pictureClasses: [],
+        attrs         : {},
+    } %}
+
+    {% set opts = defaultOptions | merge(options) %}
+
+    {% if opts.captionInside %}
+        {% set opts = opts|merge({
+            figureClasses: opts.figureClasses|merge(['caption-inside']),
+        }) %}
+    {% endif %}
+
+    {# Build an attribute string from extraAttrs (optional). #}
+    {% set extraAttrsString = '' %}
+    {% for attrName, attrValue in opts.attrs %}
+        {% set extraAttrsString = extraAttrsString ~ ' ' ~ attrName ~ '="' ~ attrValue ~ '"' %}
+    {% endfor %}
+
+    {% if opts.caption and image.caption %}
+        <figure class="{{ opts.figureClasses | join(' ') }}">
+    {% endif %}
+
+    {% if optimizedImage %}
+        <picture class="{{ opts.pictureClasses | join(' ') }}">
+            <source
+                sizes="{{ opts.sizes }}"
+                srcset="{{ optimizedImage.srcsetWebp() }}"
+                type="image/webp"
+            >
+
+            <img
+                class="{{ opts.imageClasses | join(' ') }}"
+                src="{{ optimizedImage.placeholderBox() }}"
+                srcset="{{ optimizedImage.srcset() }}"
+                sizes="{{ opts.sizes }}"
+                {% if opts.lazy %} loading="lazy" {% endif %}
+                width="{{ optimizedImage.maxSrcsetWidth() }}"
+                height="{{ optimizedImage.variantHeights[optimizedImage.maxSrcsetWidth()] }}"
+                {{ _self.altText(image) }}
+                {{ extraAttrsString | raw }}
+            >
+        </picture>
+    {% else %}
+        <img
+            class="{{ opts.imageClasses | join(' ') }}"
+            src="{{ image.url }}"
+            sizes="{{ opts.sizes }}"
+            {% if opts.lazy %} loading="lazy" {% endif %}
+            width="{{ image.width }}"
+            height="{{ image.height }}"
+            {{ _self.altText(image) }}
+            {{ extraAttrsString | raw }}
+        >
+    {% endif %}
+
+    {% if opts.caption and image.caption %}
+        <figcaption class="">
+            {{ image.caption }}
+        </figcaption>
+    </figure>
+    {% endif %}
+{% endmacro %}
