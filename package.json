@@ -16,10 +16,10 @@
     "dependencies": {
         "@fancyapps/ui": "^5.0.36",
         "@tailwindcss/vite": "^4.0.6",
-        "alpinejs": "^3.14.8",
-        "gsap": "npm:@gsap/shockingly@^3.12.5",
+        "alpinejs": "^3.14.9",
+        "gsap": "^3.13.0",
         "swiper": "^11.1.14",
-        "tailwindcss": "^4.0.6",
+        "tailwindcss": "^4.1",
         "vite-plugin-compression": "^0.5.1",
         "vite-plugin-restart": "^0.4.2"
     }

@@ -1,4 +1,4 @@
-dateModified: 1739569968
+dateModified: 1747248141
 email:
   fromEmail: $SYSTEM_EMAIL
   fromName: $SYSTEM_NAME
@@ -63,7 +63,7 @@ plugins:
     edition: standard
     enabled: true
     licenseKey: $SEOMATIC
-    schemaVersion: 3.0.12
+    schemaVersion: 3.0.13
   sprig:
     edition: standard
     enabled: true
@@ -77,7 +77,7 @@ system:
   live: true
   name: $SYSTEM_NAME
   retryDuration: null
-  schemaVersion: 5.6.0.2
+  schemaVersion: 5.7.0.3
   timeZone: America/Los_Angeles
 users:
   allowPublicRegistration: false

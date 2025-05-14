@@ -3,21 +3,21 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "craftcms/ckeditor"                     : "^4.5.0",
-        "craftcms/mailgun"                      : "^3.1.0",
-        "craftcms/cms"                          : "^5.0.0",
-        "nystudio107/craft-vite"                : "^5.0.1",
-        "nystudio107/craft-imageoptimize"       : "^5.0.4",
-        "nystudio107/craft-retour"              : "^5.0.6",
-        "vlucas/phpdotenv"                      : "^5.4.0",
-        "verbb/formie"                          : "^3.0.20",
-        "verbb/hyper"                           : "^2.2.3",
-        "mmikkel/retcon"                        : "^3.2.1",
-        "verbb/image-resizer"                   : "^4.0.1",
-        "nystudio107/craft-seomatic"            : "^5.1.11",
+        "craftcms/ckeditor": "4.8.0",
+        "craftcms/cms": "5.7.5",
+        "craftcms/mailgun": "^3.1.0",
+        "mmikkel/retcon": "^3.2.1",
+        "nystudio107/craft-imageoptimize": "^5.0.4",
+        "nystudio107/craft-retour": "5.0.10",
+        "nystudio107/craft-seomatic": "5.1.13",
+        "nystudio107/craft-vite": "^5.0.1",
         "putyourlightson/craft-dashboard-begone": "^3.0.0",
-        "putyourlightson/craft-sprig"           : "^3.5.2",
-        "spicyweb/craft-embedded-assets"        : "^5.4.2"
+        "putyourlightson/craft-sprig": "3.6.1",
+        "spicyweb/craft-embedded-assets": "^5.4.2",
+        "verbb/formie": "3.0.27",
+        "verbb/hyper": "2.2.6",
+        "verbb/image-resizer": "4.0.3",
+        "vlucas/phpdotenv": "^5.4.0"
     },
     "require-dev": {
         "craftcms/generator": "^2.0.0",
@@ -38,5 +38,12 @@
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example.dev', '.env');\""
         ]
-    }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://composer.craftcms.com",
+            "canonical": false
+        }
+    ]
 }
