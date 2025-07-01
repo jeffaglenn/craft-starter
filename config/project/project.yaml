@@ -1,4 +1,4 @@
-dateModified: 1747248141
+dateModified: 1751397334
 email:
   fromEmail: $SYSTEM_EMAIL
   fromName: $SYSTEM_NAME
@@ -77,7 +77,7 @@ system:
   live: true
   name: $SYSTEM_NAME
   retryDuration: null
-  schemaVersion: 5.7.0.3
+  schemaVersion: 5.8.0.3
   timeZone: America/Los_Angeles
 users:
   allowPublicRegistration: false

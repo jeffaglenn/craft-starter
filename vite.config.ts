@@ -15,6 +15,11 @@ export default defineConfig (({ command }) => ({
         rollupOptions: {
             input: {
                 app: 'src/app.js',
+            },
+            output: {
+                manualChunks: {
+                    vendor: ['alpinejs', 'gsap'],
+                }
             }
         },
     },

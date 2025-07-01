@@ -1,5 +1,8 @@
 .link {
-    background-image: linear-gradient(var(--color-current), var(--color-current));
+    background-image: linear-gradient(
+        var(--color-current),
+        var(--color-current)
+    );
     background-repeat: no-repeat;
     transition: background-size 500ms ease-in-out;
     background-position: 100% 100%;
@@ -7,7 +10,10 @@
     transition: background-size 250ms ease-in-out;
 
     &:hover {
-        background-image: linear-gradient(var(--color-current), var(--color-current));
+        background-image: linear-gradient(
+            var(--color-current),
+            var(--color-current)
+        );
         background-position: 0% 100%;
         background-size: 100% 1px;
     }

@@ -1,0 +1,47 @@
+{#
+Card Module Component
+
+This demonstrates how modules can compose elements together.
+
+Parameters:
+- title (string): Card title
+- content (string): Card content/description
+- url (string, optional): Link URL
+- buttonText (string): Button text (default: 'Learn More')
+- buttonVariant (string): Button variant (default: 'primary')
+- image (object, optional): Image asset
+- classes (string, optional): Additional CSS classes
+#}
+
+{% set cardClasses = [
+  'bg-white rounded-lg shadow-md overflow-hidden transition-shadow hover:shadow-lg',
+  classes ? classes : ''
+] | filter | join(' ') %}
+
+<article class="{{ cardClasses }}">
+  {% if image %}
+    <div class="aspect-video overflow-hidden">
+      <img src="{{ image.url }}"
+           alt="{{ image.alt | default(title) }}"
+           class="w-full h-full object-cover">
+    </div>
+  {% endif %}
+
+  <div class="p-6">
+    {% if title %}
+      <h3 class="text-xl font-semibold text-gray-900 mb-3">{{ title }}</h3>
+    {% endif %}
+
+    {% if content %}
+      <p class="text-gray-600 mb-4">{{ content }}</p>
+    {% endif %}
+
+    {% if url %}
+      {% include '_includes/_components/elements/button' with {
+        text: buttonText | default('Learn More'),
+        variant: buttonVariant | default('primary'),
+        url: url
+      } %}
+    {% endif %}
+  </div>
+</article>
