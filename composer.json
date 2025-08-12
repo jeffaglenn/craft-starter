@@ -4,7 +4,7 @@
     "prefer-stable": true,
     "require": {
         "craftcms/ckeditor": "4.9.0",
-        "craftcms/cms": "5.8.6",
+        "craftcms/cms": "5.8.13.2",
         "craftcms/mailgun": "^3.1.0",
         "mmikkel/retcon": "^3.2.1",
         "nystudio107/craft-imageoptimize": "^5.0.4",
@@ -12,10 +12,10 @@
         "nystudio107/craft-seomatic": "5.1.16",
         "nystudio107/craft-vite": "^5.0.1",
         "putyourlightson/craft-dashboard-begone": "^3.0.0",
-        "putyourlightson/craft-sprig": "3.6.1",
+        "putyourlightson/craft-sprig": "3.7.0",
         "spicyweb/craft-embedded-assets": "^5.4.2",
-        "verbb/hyper": "2.2.6",
-        "verbb/image-resizer": "4.0.3",
+        "verbb/hyper": "2.2.7",
+        "verbb/image-resizer": "4.0.4",
         "vlucas/phpdotenv": "^5.4.0"
     },
     "require-dev": {
