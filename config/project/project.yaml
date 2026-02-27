@@ -1,19 +1,15 @@
-dateModified: 1752262855
+dateModified: 1772235081
 email:
-  fromEmail: $SYSTEM_EMAIL
-  fromName: $SYSTEM_NAME
-  replyToEmail: $SYSTEM_REPLY_EMAIL
-  template: null
-  transportSettings:
-    command: '/usr/local/bin/mailpit sendmail -t --smtp-addr 127.0.0.1:1025'
+  fromEmail: jeff@2dimes.com
+  fromName: 'Craft Starter'
   transportType: craft\mail\transportadapters\Sendmail
 meta:
   __names__:
-    2e3c2999-5000-423e-b8db-f25ced8d87a9: 'Craft Starter' # Craft Starter
-    7b5134ba-6837-46ef-a1c1-3d64253e089e: Sites # Sites
-    9d539a9e-ff0a-41c5-a781-0c6988d155ff: New # New
-    12699418-de14-4bfb-ba48-67f9f477b478: 'Contact Form' # Contact Form
-    f2d4d54a-4662-40d2-9202-8443a43c2ac9: Simple # Simple
+    7426a486-f806-4e88-aa62-160ed6e95530: New # New
+    94144b56-3bf0-4f6c-9fa7-0a288b16c2ce: Simple # Simple
+    b5714610-09dc-43c8-9404-d8f85fb50c25: 'Craft Starter' # Craft Starter
+    f230fd55-2135-4ae2-af5a-612fe1c92276: 'Craft Starter' # Craft Starter
+    fd80e569-f622-47ea-bd5b-9740affd4051: 'Contact Form' # Contact Form
 plugins:
   ckeditor:
     edition: standard
@@ -30,22 +26,17 @@ plugins:
   formie:
     edition: standard
     enabled: true
-    licenseKey: $FORMIE
-    schemaVersion: 3.4.8
-  hyper:
-    edition: standard
-    enabled: true
-    licenseKey: $HYPER
-    schemaVersion: 1.0.0
-  image-optimize:
-    edition: standard
-    enabled: true
-    licenseKey: $IMAGE_OPTIMIZE
-    schemaVersion: 1.0.0
+    licenseKey: HLXUDGM2IZ5S4MCLY76YTXPB
+    schemaVersion: 3.4.12
   image-resizer:
     edition: standard
     enabled: true
     schemaVersion: 2.0.0
+  imager-x:
+    edition: pro
+    enabled: true
+    licenseKey: JDZ9JPYB3QP3UEKU17NRT1OH
+    schemaVersion: 4.0.0
   mailgun:
     edition: standard
     enabled: true
@@ -57,12 +48,12 @@ plugins:
   retour:
     edition: standard
     enabled: true
-    licenseKey: $RETOUR
+    licenseKey: SUYYIVAOM11YDQMGUH6FKGB4
     schemaVersion: 3.0.12
   seomatic:
     edition: standard
     enabled: true
-    licenseKey: $SEOMATIC
+    licenseKey: YOQ43R198MGSWM19K9YM7OSW
     schemaVersion: 3.0.13
   sprig:
     edition: standard
@@ -74,11 +65,10 @@ plugins:
     schemaVersion: 1.0.0
 system:
   edition: solo
-  live: $IS_SYSTEM_LIVE
-  name: $SYSTEM_NAME
-  retryDuration: null
-  schemaVersion: 5.8.0.3
-  timeZone: $TIMEZONE
+  live: true
+  name: 'Craft Starter'
+  schemaVersion: 5.9.0.8
+  timeZone: America/Los_Angeles
 users:
   allowPublicRegistration: false
   defaultGroup: null

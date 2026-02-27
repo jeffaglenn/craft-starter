@@ -1,16 +1,16 @@
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vite';
 
-import tailwindcss from '@tailwindcss/vite'
+import tailwindcss from '@tailwindcss/vite';
 import ViteRestart from 'vite-plugin-restart';
 import viteCompression from 'vite-plugin-compression';
 
-export default defineConfig (({ command }) => ({
+export default defineConfig(({ command }) => ({
     base: command === 'serve' ? '' : '/dist/',
     publicDir: 'src/public',
     build: {
         outDir: 'web/dist/',
         emptyOutDir: true,
-        sourcemap: true,
+        sourcemap: 'hidden',
         manifest: true,
         rollupOptions: {
             input: {
@@ -26,7 +26,7 @@ export default defineConfig (({ command }) => ({
     plugins: [
         tailwindcss(),
         viteCompression({
-            filter: /\.(js|mjs|json|css|map)$/i
+            filter: /\.(js|mjs|json|css)$/i
         }),
         ViteRestart({
             reload: [
@@ -43,7 +43,7 @@ export default defineConfig (({ command }) => ({
             origin: /https?:\/\/([A-Za-z0-9\-\.]+)?(\.ddev\.site)(?::\d+)?$/,
         },
         watch: {
-            ignored: ['./storage/**', './vendor/**', './node_modules/**', './web/**'],
+            ignored: ['storage/**', 'vendor/**', 'node_modules/**', 'web/**'],
         }
     }
 }));
