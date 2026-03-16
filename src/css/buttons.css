@@ -4,7 +4,6 @@
         var(--color-current)
     );
     background-repeat: no-repeat;
-    transition: background-size 500ms ease-in-out;
     background-position: 100% 100%;
     background-size: 0% 1px;
     transition: background-size 250ms ease-in-out;

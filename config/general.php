@@ -12,19 +12,20 @@ use craft\config\GeneralConfig;
 use craft\helpers\App;
 
 return GeneralConfig::create()
-    ->isSystemLive(App::env('IS_SYSTEM_LIVE') ?? true)
+    ->convertFilenamesToAscii(true)
     ->cpTrigger(App::env('CP_TRIGGER') ?? 'admin')
-    ->timezone(App::env('TIMEZONE') ?? 'America/Chicago')
-    ->errorTemplatePrefix('_errors/')
+    ->defaultImageQuality(90)
     ->defaultWeekStartDay(0)
-    ->useEmailAsUsername()
+    ->enableGql(0)
+    ->errorTemplatePrefix('_errors/')
+    ->isSystemLive(App::env('IS_SYSTEM_LIVE') ?? true)
+    ->maxInvalidLogins(5)
+    ->maxUploadFileSize('25M')
     ->omitScriptNameInUrls()
     ->preloadSingles()
     ->preventUserEnumeration()
+    ->timezone(App::env('TIMEZONE') ?? 'America/Chicago')
     ->useEmailAsUsername()
-    ->enableGql(0)
-    ->maxUploadFileSize('25M')
-    ->defaultImageQuality(100)
     ->aliases([
         '@web' => App::env('PRIMARY_SITE_URL'),
         '@webroot' => App::env('CRAFT_WEB_ROOT'),
