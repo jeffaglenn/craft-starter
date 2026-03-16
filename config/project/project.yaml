@@ -1,4 +1,4 @@
-dateModified: 1772235081
+dateModified: 1773684173
 email:
   fromEmail: jeff@2dimes.com
   fromName: 'Craft Starter'
@@ -6,7 +6,6 @@ email:
 meta:
   __names__:
     7426a486-f806-4e88-aa62-160ed6e95530: New # New
-    94144b56-3bf0-4f6c-9fa7-0a288b16c2ce: Simple # Simple
     b5714610-09dc-43c8-9404-d8f85fb50c25: 'Craft Starter' # Craft Starter
     f230fd55-2135-4ae2-af5a-612fe1c92276: 'Craft Starter' # Craft Starter
     fd80e569-f622-47ea-bd5b-9740affd4051: 'Contact Form' # Contact Form
@@ -14,7 +13,7 @@ plugins:
   ckeditor:
     edition: standard
     enabled: true
-    schemaVersion: 3.0.0.0
+    schemaVersion: 5.0.0.1
   dashboard-begone:
     edition: standard
     enabled: true
