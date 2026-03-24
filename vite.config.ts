@@ -1,8 +1,7 @@
 import { defineConfig } from 'vite';
 
 import tailwindcss from '@tailwindcss/vite';
-import ViteRestart from 'vite-plugin-restart';
-import viteCompression from 'vite-plugin-compression';
+import { compression } from 'vite-plugin-compression2';
 
 export default defineConfig(({ command }) => ({
     base: command === 'serve' ? '' : '/dist/',
@@ -12,27 +11,39 @@ export default defineConfig(({ command }) => ({
         emptyOutDir: true,
         sourcemap: 'hidden',
         manifest: true,
-        rollupOptions: {
+        rolldownOptions: {
             input: {
                 app: 'src/app.js',
             },
             output: {
-                manualChunks: {
-                    vendor: ['alpinejs', 'gsap'],
-                }
-            }
+                codeSplitting: {
+                    groups: [
+                        {
+                            name: 'vendor',
+                            test: /node_modules[\\/](alpinejs|gsap)/,
+                            priority: 10,
+                        },
+                    ],
+                },
+            },
         },
     },
     plugins: [
         tailwindcss(),
-        viteCompression({
-            filter: /\.(js|mjs|json|css)$/i
+        compression({
+            include: /\.(js|mjs|json|css)$/i,
         }),
-        ViteRestart({
-            reload: [
-                'templates/**/*',
-            ],
-        }),
+        {
+            name: 'reload-on-template-change',
+            configureServer(server) {
+                server.watcher.add('templates/**/*');
+                server.watcher.on('change', (path) => {
+                    if (path.includes('/templates/')) {
+                        server.ws.send({ type: 'full-reload' });
+                    }
+                });
+            },
+        },
     ],
     server: {
         host: '0.0.0.0',
