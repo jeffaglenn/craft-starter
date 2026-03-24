@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "author": "Jeff Glenn",
     "license": "ISC",
-    "description": "Starter Project for Craft CMS 5 using Vite 6 and Tailwind 4",
+    "description": "Starter Project for Craft CMS 5 using Vite 8 and Tailwind 4",
     "type": "module",
     "scripts": {
         "dev": "vite",
