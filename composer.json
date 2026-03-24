@@ -1,5 +1,4 @@
 {
-    "name": "jeffaglenn/craft-cms",
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
