@@ -1,0 +1,140 @@
+/*----------------------------------------------
+Formie Form Styles
+Override Formie's CSS variables to match project design.
+Keeps Formie's default HTML/JS intact — just visual changes.
+
+Per-project: update the variable values below to match your
+design tokens. For structural changes, use Formie's themeConfig
+in craft.formie.renderForm() or config/formie.php.
+----------------------------------------------*/
+
+@layer base {
+    body {
+        /* Typography */
+        --fui-font: var(--font-arial);
+        --fui-color: var(--color-black);
+
+        /* Primary color (focus rings, active states) */
+        --fui-primary-color: var(--color-black);
+        --fui-primary-color-hover: var(--color-gray-700, #374151);
+
+        /* Layout */
+        --fui-border-radius: 0.5rem;
+        --fui-field-gutter: 1.5rem;
+
+        /* Inputs */
+        --fui-input-font-size: var(--text-1p6);
+        --fui-input-border: 1px solid var(--color-gray-300, #d1d5db);
+        --fui-input-padding: 0.75rem 1rem;
+        --fui-input-placeholder-color: var(--color-gray-400, #9ca3af);
+        --fui-focus-border-color: var(--color-black);
+        --fui-focus-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+
+        /* Labels */
+        --fui-label-color: var(--color-black);
+        --fui-label-font-size: var(--text-1p4);
+
+        /* Error messages */
+        --fui-error-font-size: var(--text-1p2);
+
+        /* Checkboxes & Radios */
+        --fui-check-font-size: var(--text-1p6);
+        --fui-check-label-line-height: 2.5rem;
+        --fui-check-label-width: 20px;
+        --fui-check-label-height: 20px;
+        --fui-check-margin-right: 1rem;
+        --fui-check-label-padding-left: 25px;
+        --fui-check-bg-color-checked: var(--color-white);
+        --fui-check-border-color-checked: var(--color-black);
+        --fui-check-check-bg-size: 10px auto;
+        --fui-check-check-border-radius: 0;
+        --fui-check-label-top: 0.25rem;
+
+        /* Select fields */
+        --fui-select-bg-size: 15px auto;
+        --fui-select-bg-position: right 1rem center;
+        --fui-select-padding-right: 3rem;
+
+        /* Buttons */
+        --fui-btn-border: none;
+        --fui-btn-font-size: var(--text-1p4);
+        --fui-btn-line-height: 1;
+        --fui-btn-padding: 1rem 2rem;
+        --fui-btn-border-radius: 0.5rem;
+
+        /* Submit button */
+        --fui-submit-btn-bg-color: var(--color-black);
+        --fui-submit-btn-bg-color-hover: var(--color-gray-700, #374151);
+        --fui-submit-btn-color: var(--color-white);
+        --fui-submit-btn-color-hover: var(--color-white);
+
+        /* Button container */
+        --fui-btn-container-padding: 1.5rem 0 0 0;
+
+        /* Alerts */
+        --fui-alert-padding: 1.5rem;
+        --fui-alert-font-size: var(--text-1p4);
+        --fui-alert-line-height: 1.4;
+
+        /* Groups */
+        --fui-group-border: none;
+    }
+}
+
+/* Form base */
+.fui-form {
+    @apply font-normal;
+}
+
+/* Labels */
+.fui-label,
+.fui-legend {
+    @apply font-medium;
+}
+
+/* Submit button hover */
+.fui-btn {
+    @apply transition-colors;
+}
+
+/* Agree field (terms & conditions checkbox) */
+.fui-type-agree .fui-checkbox {
+    font-size: var(--text-1p4);
+}
+
+/* Groups */
+.fui-group {
+    @apply bg-black/5;
+}
+
+
+/*----------------------------------------------
+Dark form variant
+Wrap your form in a .form--dark container to
+invert colors for dark backgrounds.
+
+Usage:
+    <div class="form--dark">
+        {{ craft.formie.renderForm('contactForm') }}
+    </div>
+----------------------------------------------*/
+
+/* Uncomment and customize when needed:
+.form--dark {
+    --fui-color: var(--color-white);
+    --fui-label-color: var(--color-white);
+    --fui-input-background-color: var(--color-gray-800, #1f2937);
+    --fui-input-border: 1px solid var(--color-gray-600, #4b5563);
+    --fui-input-placeholder-color: rgba(255, 255, 255, 0.3);
+    --fui-check-bg-color: var(--color-gray-800, #1f2937);
+    --fui-check-label-border: 1px solid var(--color-gray-600, #4b5563);
+    --fui-check-label-bg-color: var(--color-gray-800, #1f2937);
+    --fui-check-bg-color-checked: var(--color-gray-800, #1f2937);
+
+    @apply text-white;
+
+    .fui-group {
+        @apply bg-white/10;
+    }
+}
+*/
