@@ -3,8 +3,8 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "craftcms/ckeditor": "^5.2.0",
-        "craftcms/cms": "^5.9.16",
+        "craftcms/ckeditor": "^5.3.1",
+        "craftcms/cms": "^5.9.17",
         "craftcms/mailgun": "^3.1.0",
         "mmikkel/retcon": "^3.2.1",
         "nystudio107/craft-retour": "^5.0.14",
@@ -14,8 +14,8 @@
         "putyourlightson/craft-sprig": "^3.7.2",
         "spacecatninja/imager-x": "^5.2.1",
         "spicyweb/craft-embedded-assets": "^5.4.2",
-        "verbb/formie": "^3.1.17",
-        "verbb/image-resizer": "^4.0.5",
+        "verbb/formie": "^3.1.18",
+        "verbb/image-resizer": "^4.0.6",
         "vlucas/phpdotenv": "^5.4.0"
     },
     "require-dev": {
