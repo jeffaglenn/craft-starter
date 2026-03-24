@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 
 import tailwindcss from '@tailwindcss/vite';
 import { compression } from 'vite-plugin-compression2';
+import ViteRestart from 'vite-plugin-restart';
 
 export default defineConfig(({ command }) => ({
     base: command === 'serve' ? '' : '/dist/',
@@ -33,17 +34,9 @@ export default defineConfig(({ command }) => ({
         compression({
             include: /\.(js|mjs|json|css)$/i,
         }),
-        {
-            name: 'reload-on-template-change',
-            configureServer(server) {
-                server.watcher.add('templates/**/*');
-                server.watcher.on('change', (path) => {
-                    if (path.includes('/templates/')) {
-                        server.ws.send({ type: 'full-reload' });
-                    }
-                });
-            },
-        },
+        ViteRestart({
+            reload: ['templates/**/*'],
+        }),
     ],
     server: {
         host: '0.0.0.0',
