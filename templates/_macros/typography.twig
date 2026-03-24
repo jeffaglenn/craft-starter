@@ -23,10 +23,10 @@ to basic rich text elements so they can be styled.
 {% macro richText(fieldName) %}
     {{ fieldName | retcon([
         ['attr', 'h2', {
-            class: _self.headingClasses('h2') ~ 'mb-2'
+            class: _self.headingClasses('h2') ~ ' mb-2'
         }, false],
         ['attr', 'h3', {
-            class: _self.headingClasses('h3') ~ 'mb-2'
+            class: _self.headingClasses('h3') ~ ' mb-2'
         }, false],
         ['attr', 'p', {
             class: 'my-2'

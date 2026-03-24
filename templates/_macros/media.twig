@@ -12,7 +12,7 @@ Looks for Alt Text field > Caption field > defaults to Title
 Responsive Image Macro using Imager-X
 
 Usage:
-    {% import '_macros/_media' as media %}
+    {% import '_macros/media' as media %}
 
     Basic usage with defaults
     {{ media.responsiveImage(entry.heroImage.one()) }}
@@ -76,7 +76,7 @@ Usage:
                     src="{{ transforms[0].url }}"
                     srcset="{{ craft.imagerx.srcset(transforms) }}"
                     sizes="{{ opts.sizes }}"
-                    {% if opts.lazy %}loading="lazy" decoding="async"{% endif %}
+                    {% if opts.lazy %}loading="lazy" decoding="async"{% else %}fetchpriority="high"{% endif %}
                     width="{{ image.width }}"
                     height="{{ image.height }}"
                     {{ _self.altText(image) }}

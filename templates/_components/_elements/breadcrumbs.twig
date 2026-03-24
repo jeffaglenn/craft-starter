@@ -64,7 +64,7 @@ Options:
 
 {# render breadcrumb #}
 {% if breadcrumbLinks|length > 1 %}
-<nav class="overflow-scroll scrolling-touch scroll-hide whitespace-no-wrap breadcrumb {{ container ? 'border-y border-gray-200 py-p5' }} {{ styleClasses }}" aria-label="{{'breadcrumbs'|t}}">
+<nav class="overflow-scroll hide-scrollbar whitespace-nowrap breadcrumb {{ container ? 'border-y border-gray-200 py-p5' }} {{ styleClasses }}" aria-label="{{'breadcrumbs'|t}}">
         <ol role="list" class="{{ container ? 'wrapper' }} flex items-center text-1 font-normal gap-p5" itemscope itemtype="http://schema.org/BreadcrumbList">
             {% for link in breadcrumbLinks %}
                 <li class="shrink-0 {{loop.last ? 'is-active'}}" {{loop.last ? 'aria-current="page"' }} itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">

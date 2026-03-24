@@ -13,9 +13,11 @@ END TEMPLATE SETTINGS
 ######################}
 
 {% block body %}
-    {{ entry.title }}
-{% endblock %}
+    {% for hero in entry.hero.collect() %}
+        {% include '_components/_sections/hero/' ~ hero.type | kebab ignore missing %}
+    {% endfor %}
 
-{% for item in entry.contentBuilder.all() %}
-    {% include "_components/_content-builder/_" ~ item.type | kebab ignore missing %}
-{% endfor %}
+    {% for item in entry.contentBuilder.all() %}
+        {% include "_components/_content-builder/" ~ item.type | kebab ignore missing %}
+    {% endfor %}
+{% endblock %}
