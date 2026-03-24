@@ -1,0 +1,106 @@
+{#
+Breadcrumbs Component
+Auto-generates breadcrumbs from the current URL segments.
+
+Usage:
+    Auto-generated from URL (most common)
+    {% include '_components/_elements/breadcrumbs' %}
+
+    With custom styling
+    {% include '_components/_elements/breadcrumbs' with {
+        styleClasses: 'text-gray-500',
+        container: false,
+    } %}
+
+    With manually defined links
+    {% include '_components/_elements/breadcrumbs' with {
+        breadcrumbLinks: [
+            { url: siteUrl, title: 'Home' },
+            { url: entry.section.url, title: entry.section.name },
+            { url: entry.url, title: entry.title },
+        ]
+    } %}
+
+Options:
+    - styleClasses (string, default: 'text-gray-700'): CSS classes for the nav wrapper
+    - container (bool, default: true): Wrap breadcrumb list in .wrapper
+    - nonElementLinks (bool, default: false): Include URL segments that don't match a Craft element
+    - breadcrumbLinks (array, optional): Override auto-generation with manual links
+#}
+
+{# settings #}
+{% set nonElementLinks = false %}
+{% set styleClasses = styleClasses | default('text-gray-700') %}
+{% set container = container is defined ? container : true %}
+
+{# populate breadcrumbLinks array if no array of links was provided #}
+{% if breadcrumbLinks is not defined %}
+    {% set breadcrumbLinks = [] %}
+    {# home #}
+    {% set home = craft.app.getElements().getElementByUri('__home__', currentSite.id) %}
+    {% set breadcrumbLinks = breadcrumbLinks|merge([{
+        url: home.url ?? alias(currentSite.baseUrl),
+        title: 'Home',
+    }]) %}
+
+    {# get elements #}
+    {% set segments = craft.app.request.segments %}
+    {% for segment in segments %}
+            {% set uriPart = segments[0:loop.index]|join('/')|literal %}
+            {% set element = craft.app.elements.getElementByUri(uriPart, currentSite.id) %}
+            {% if element %}
+                {% set breadcrumbLinks = breadcrumbLinks|merge([{
+                    url: element.url,
+                    title: element.title,
+                }]) %}
+            {% elseif nonElementLinks %}
+                {% set breadcrumbLinks = breadcrumbLinks|merge([{
+                    url: url(uriPart),
+                    title: segment|t,
+                }]) %}
+            {% endif %}
+    {% endfor %}
+{% endif %}
+
+{# render breadcrumb #}
+{% if breadcrumbLinks|length > 1 %}
+<nav class="overflow-scroll scrolling-touch scroll-hide whitespace-no-wrap breadcrumb {{ container ? 'border-y border-gray-200 py-p5' }} {{ styleClasses }}" aria-label="{{'breadcrumbs'|t}}">
+        <ol role="list" class="{{ container ? 'wrapper' }} flex items-center text-1 font-normal gap-p5" itemscope itemtype="http://schema.org/BreadcrumbList">
+            {% for link in breadcrumbLinks %}
+                <li class="shrink-0 {{loop.last ? 'is-active'}}" {{loop.last ? 'aria-current="page"' }} itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                        {% if loop.first %}
+                            <a class="block" href="{{link.url}}" itemtype="http://schema.org/Thing" itemprop="item">
+                                <svg class="size-[12px] fill-current">
+                                    <use href="#icon-home"></use>
+                                </svg>
+                                <span itemprop="name" class="sr-only">Home</span>
+                            </a>
+                        {% else %}
+                            <div class="flex items-center font-semibold">
+                                <svg class="size-[10px] shrink-0 mr-p5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                                    <path d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" fill-rule="evenodd" />
+                                </svg>
+                                {% if loop.last %}
+                                    <p class="opacity-50" itemtype="http://schema.org/Thing" itemprop="item">
+                                {% else %}
+                                    <a class="" href="{{link.url}}" itemtype="http://schema.org/Thing" itemprop="item">
+                                {% endif %}
+                                    {# Truncate the title if it's longer than 50 characters #}
+                                    {% set truncatedTitle = link.title %}
+                                    {% if link.title|length > 15 %}
+                                        {% set truncatedTitle = link.title|slice(0, 15) ~ '…' %}
+                                    {% endif %}
+                                    <span itemprop="name">{{ truncatedTitle }}</span>
+                                {% if loop.last %}
+                                    </p>
+                                {% else %}
+                                    </a>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    <meta itemprop="position" content="{{loop.index}}" />
+                </li>
+            {% endfor %}
+        </ol>
+</nav>
+{% endif %}

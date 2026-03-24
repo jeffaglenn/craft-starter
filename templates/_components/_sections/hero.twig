@@ -1,0 +1,17 @@
+{######################
+TEMPLATE OPTIONS
+######################}
+
+{# Import Macros #}
+{% import '_macros/media' as media %}
+{% import '_macros/typography' as typography %}
+
+{######################
+END TEMPLATE SETTINGS
+######################}
+
+{% for hero in entry.hero.collect() %}
+    {% include '_components/_sections/_hero-types/' ~ hero.type | kebab %}
+{% endfor %}
+
+{% include "_components/_elements/_breadcrumbs" %}

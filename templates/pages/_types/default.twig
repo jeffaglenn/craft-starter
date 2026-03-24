@@ -15,3 +15,7 @@ END TEMPLATE SETTINGS
 {% block body %}
     {{ entry.title }}
 {% endblock %}
+
+{% for item in entry.contentBuilder.all() %}
+    {% include "_components/_content-builder/_" ~ item.type | kebab ignore missing %}
+{% endfor %}

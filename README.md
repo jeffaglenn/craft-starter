@@ -100,35 +100,6 @@ A modern, production-ready starter template for [Craft CMS 5.x](https://github.c
 - Text reveal animations
 - Stagger effects for lists and grids
 
-## 🧩 Template Components
-
-The starter includes a component library with organized UI components:
-
-**Usage Example:**
-```twig
-{# Button element #}
-{% include '_includes/_components/elements/button' with {
-    text: 'Get Started',
-    variant: 'primary',
-    size: 'lg',
-    url: '/contact'
-} %}
-
-{# Card module (composes elements) #}
-{% include '_includes/_components/modules/card' with {
-    title: 'Feature Card',
-    content: 'Description of this feature...',
-    url: '/features',
-    buttonText: 'Learn More'
-} %}
-
-{# Navigation section #}
-{% include '_includes/_components/sections/navigation' with {
-    entries: craft.entries.section('navigation').all(),
-    currentPath: craft.app.request.pathInfo
-} %}
-```
-
 ## ⚡ Performance Features
 
 - **Code Splitting:** Vendor chunks for better caching

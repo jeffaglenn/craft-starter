@@ -31,11 +31,11 @@
 
         {# {{ svg("@webroot/dist/spritemap.svg", sanitize=false, namespace=false) | attr({ style: 'display: none' }) }} #}
 
-        {% include "_includes/_global/_header" %}
+        {% include "_components/_global/header" %}
         <main id="main-content">
             {% block body %}{% endblock %}
         </main>
-        {% include "_includes/_global/_footer" %}
+        {% include "_components/_global/footer" %}
 
         {# For when you need to do inline javascript after the main.js loads #}
         {% block footer %}{% endblock %}
