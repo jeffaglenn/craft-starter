@@ -1,0 +1,37 @@
+h2 {
+    font-size: 1.5em;
+}
+
+h2.display-heading {
+    font-size: 2em;
+}
+
+p.small-heading + h2,
+p.small-heading + h3 {
+    margin-top: 0;
+}
+
+p.small-heading {
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-bottom: 0;
+    color: #808080;
+    font-weight: 600;
+    letter-spacing: 0.075em;
+}
+
+p.small-text {
+    font-size: 0.75em;
+    opacity: 0.8;
+}
+
+ul.list-columns,
+ol.list-columns {
+    columns: 2;
+    gap: 4rem;
+}
+
+ul.list-columns li,
+ol.list-columns li {
+    break-inside: avoid;
+}

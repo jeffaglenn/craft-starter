@@ -2,6 +2,8 @@
     /* Colors */
     --color-black: #000000;
     --color-white: #ffffff;
+    --color-transparent: transparent;
+    --color-current    : currentColor;
 
     /* --color-gray-50: oklch(0.985 0.001 106.423);
     --color-gray-100: oklch(0.97 0.001 106.424);

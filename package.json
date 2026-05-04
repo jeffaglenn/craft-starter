@@ -27,7 +27,11 @@
         "vite-plugin-restart": "^2.0.0"
     },
     "dependencies": {
+        "@alpinejs/collapse": "^3.15.9",
+        "@alpinejs/focus": "^3.15.11",
+        "@alpinejs/persist": "^3.15.11",
         "@fancyapps/ui": "^6.0.1",
+        "@tailwindcss/forms": "^0.5.11",
         "@tailwindcss/vite": "^4.2.2",
         "alpinejs": "^3.14.9",
         "gsap": "^3.13.0",

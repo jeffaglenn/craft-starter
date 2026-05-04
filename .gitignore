@@ -30,6 +30,7 @@ web/cpresources
 web/uploads
 web/assets
 web/dist
+web/imager
 
 # temporary build files
 .tmp

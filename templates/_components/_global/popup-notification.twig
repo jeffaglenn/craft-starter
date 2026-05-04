@@ -1,0 +1,45 @@
+{% set popupNotification = entry.popupNotification.one() | default() %}
+
+{% if popupNotification %}
+
+    {# Import Macros #}
+    {% import '_macros/media' as media %}
+    {% import '_macros/typography' as typography %}
+
+    {% set popupKey = 'popup_' ~ popupNotification.title | replace('/[^\\w]+/','') | slice(0, 10) | lower ~ popupNotification.dateUpdated | date('dmyHis') %}
+    {% set popupExit = popupNotification.popupExits %}
+    {% set popupFrequency = popupNotification.popupFrequency | default(0) %}
+
+    {% set popupImage = popupNotification.image.one() %}
+
+    <div
+        x-data="popupNotification('{{ popupKey }}', {{ popupFrequency }}, {{ popupExit ? 'true' : 'false' }})"
+        x-cloak
+    >
+        <div id="popup-notification" role="dialog" aria-labelledby="popup-notification-title" class="hidden p-0! m-2!">
+            <div class="flex flex-col md:flex-row">
+                {% if popupNotification.image | default() %}
+                    <div class="flex-1 h-[250px] md:h-auto" aria-hidden="true">
+                        {{ media.responsiveImage(popupImage, {
+                            sizes: '(min-width: 1024px) 50vw, 100vw',
+                            ratio: 1/1,
+                            imageClass: 'size-full object-cover',
+                        }) }}
+                    </div>
+                {% endif %}
+                <div class="wrapper self-center flex-1 space-y-4 py-2 md:py-8 max-w-prose">
+                    <div class="space-y-2">
+                        <h2 id="popup-notification-title" class="{{ typography.headingClasses('h2') }}">{{ popupNotification.title }}</h2>
+
+                        {% if popupNotification.simpleRichText | default() %}
+                            <div>
+                                {{ typography.richText(popupNotification.simpleRichText) }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endif %}

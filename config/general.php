@@ -27,7 +27,8 @@ return GeneralConfig::create()
     ->timezone(App::env('TIMEZONE') ?? 'America/Chicago')
     ->useEmailAsUsername()
     ->aliases([
-        '@web' => App::env('PRIMARY_SITE_URL'),
+        '@web'     => App::env('PRIMARY_SITE_URL'),
         '@webroot' => App::env('CRAFT_WEB_ROOT'),
+        '@assets'  => dirname(__DIR__) . '/web/dist/',
     ])
 ;

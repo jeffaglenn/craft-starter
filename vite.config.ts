@@ -3,6 +3,7 @@ import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
 import { compression } from 'vite-plugin-compression2';
 import ViteRestart from 'vite-plugin-restart';
+import { createSvgSpritePlugin } from './src/js/svg-sprite-plugin.js';
 
 export default defineConfig(({ command }) => ({
     base: command === 'serve' ? '' : '/dist/',
@@ -37,6 +38,7 @@ export default defineConfig(({ command }) => ({
         ViteRestart({
             reload: ['templates/**/*'],
         }),
+        createSvgSpritePlugin(), // Custom plugin to create an SVG sprite from the icons folder - ./src/js/svg-sprite-plugin.js
     ],
     server: {
         host: '0.0.0.0',

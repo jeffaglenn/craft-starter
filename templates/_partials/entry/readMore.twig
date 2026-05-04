@@ -1,0 +1,13 @@
+{######################
+TEMPLATE OPTIONS
+######################}
+
+{% set blockVars = {
+    richText: entry.richText,
+} %}
+
+{######################
+END TEMPLATE SETTINGS
+######################}
+
+{% include "_components/_modules/read-more" with blockVars %}

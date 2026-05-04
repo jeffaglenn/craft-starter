@@ -1,0 +1,51 @@
+{% import '_macros/media' as media %}
+
+<!DOCTYPE html>
+<html
+    lang="en-US"
+    class="{% if htmlClass is defined %}{{ htmlClass }}{% endif %}"
+>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="home" href="{{ siteUrl }}" />
+
+        {# Favicon Meta goes here #}
+        {# https://realfavicongenerator.net #}
+        {# <link rel="icon" type="image/png" href="/dist/favicon/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/svg+xml" href="/dist/favicon/favicon.svg" />
+        <link rel="shortcut icon" href="/dist/favicon/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/dist/favicon/apple-touch-icon.png" />
+        <meta name="apple-mobile-web-app-title" content="{{ siteName }}" />
+        <link rel="manifest" href="/dist/favicon/site.webmanifest" /> #}
+
+        {{ craft.vite.script("src/app.js", false) }}
+
+        {# Font embeds here #}
+
+        {% block head %}{% endblock head %}
+    </head>
+
+    <body class="{{ bodyClass | default() }}">
+
+        <a class="sr-only focus:not-sr-only" href="#main-content">{{ "Skip to main content"|t }}</a>
+
+        {% include '_components/_global/popup-notification' %}
+
+        <!-- icons -->
+        {{ svg("@assets/icons.svg", sanitize=false, namespace=false) | attr({ style: 'display: none' }) }}
+
+        {% block site_header %}{% endblock %}
+        <main id="main-content">
+            {% block body %}{% endblock %}
+        </main>
+        {% block site_footer %}{% endblock %}
+
+        {# For when you need to do inline javascript after the main.js loads #}
+        {% block footerScripts %}{% endblock %}
+
+        {# https://instant.page #}
+        <script src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
+        {# End Instant Page #}
+    </body>
+</html>

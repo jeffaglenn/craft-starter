@@ -1,17 +1,12 @@
 {######################
-TEMPLATE OPTIONS
+TEMPLATE SETTINGS
 ######################}
 
-{# Import Macros #}
-{% import '_macros/typography' as typography %}
-{% import '_macros/media' as media %}
-
-{% set card = card | default() %}
+{# Types: 'blog' #}
+{% set cardType = cardType | default('default') %}
 
 {######################
 END TEMPLATE SETTINGS
 ######################}
-{# Add 16/9 Aspect Ratio on image #}
-<article class="group/card">
-    {{ card.title }}
-</article>
+
+{% include "_components/_modules/_cards/" ~ cardType | kebab %}

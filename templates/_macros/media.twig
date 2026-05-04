@@ -17,91 +17,134 @@ Usage:
     Basic usage with defaults
     {{ media.responsiveImage(entry.heroImage.one()) }}
 
+    With aspect ratio and custom sizes
+    {{ media.responsiveImage(entry.photo.one(), {
+        ratio : 16/9,
+        sizes : '(min-width: 768px) 50vw, 100vw',
+    }) }}
+
+    Hero image (eager load, no blurhash)
+    {{ media.responsiveImage(entry.heroImage.one(), {
+        lazy    : false,
+        blurhash: false,
+    }) }}
+
     All available options with their defaults
     {{ media.responsiveImage(entry.photo.one(), {
         lazy         : true,
+        blurhash     : true,
         caption      : false,
         sizes        : '100vw',
         widths       : [400, 800, 1200, 1600, 2000],
+        ratio        : null,
         imageClass   : '',
         figureClass  : '',
         attrs        : {},
     }) }}
 ####################################}
 {% macro responsiveImage(image, options = {}) %}
-    {% if not image %}{% return %}{% endif %}
+    {% if image %}
+        {# Set default options #}
+        {% set defaultOptions = {
+            lazy         : true,
+            blurhash     : true,
+            caption      : false,
+            sizes        : '100vw',
+            widths       : [400, 800, 1200, 1600],
+            ratio        : null,
+            imageClass   : '',
+            figureClass  : '',
+            attrs        : {},
+        } %}
 
-    {# Set default options #}
-    {% set defaultOptions = {
-        lazy         : true,
-        caption      : false,
-        sizes        : '100vw',
-        widths       : [400, 800, 1200, 1600, 2000],
-        imageClass   : '',
-        figureClass  : '',
-        attrs        : {},
-    } %}
+        {% set opts = defaultOptions | merge(options) %}
 
-    {% set opts = defaultOptions | merge(options) %}
+        {% if opts.caption and image.caption %}
+            <figure class="{{ opts.figureClass }}">
+        {% endif %}
 
-    {% if opts.caption and image.caption %}
-        <figure class="{{ opts.figureClass }}">
-    {% endif %}
+        {# Only transform raster images — SVGs and GIFs pass through as-is #}
+        {% set canTransform = image.extension not in ['svg', 'gif'] %}
 
-    {# Only transform raster images — SVGs and GIFs pass through as-is #}
-    {% set canTransform = image.extension not in ['svg', 'gif'] %}
+        {% if canTransform %}
+            {# Shared defaults applied to all transforms #}
+            {% set transformDefaults = {} %}
+            {% if opts.ratio %}
+                {% set transformDefaults = transformDefaults | merge({ ratio: opts.ratio }) %}
+            {% endif %}
 
-    {% if canTransform %}
-        {# Build transform arrays from widths #}
-        {% set transformList = [] %}
-        {% set webpTransformList = [] %}
-        {% for width in opts.widths %}
-            {% set transformList = transformList | merge([{ width: width }]) %}
-            {% set webpTransformList = webpTransformList | merge([{ width: width, format: 'webp' }]) %}
-        {% endfor %}
+            {# Build transform arrays from widths #}
+            {% set transformList = [] %}
+            {% set webpTransformList = [] %}
+            {% set avifTransformList = [] %}
+            {% for width in opts.widths %}
+                {% set transformList = transformList | merge([transformDefaults | merge({ width: width })]) %}
+                {% set webpTransformList = webpTransformList | merge([transformDefaults | merge({ width: width, format: 'webp' })]) %}
+                {% set avifTransformList = avifTransformList | merge([transformDefaults | merge({ width: width, format: 'avif' })]) %}
+            {% endfor %}
 
-        {% set transforms = craft.imagerx.transformImage(image, transformList) %}
-        {% set webpTransforms = craft.imagerx.transformImage(image, webpTransformList) %}
+            {% set transforms = craft.imagerx.transformImage(image, transformList) %}
+            {% set webpTransforms = craft.imagerx.transformImage(image, webpTransformList) %}
+            {% set avifTransforms = craft.imagerx.transformImage(image, avifTransformList) %}
 
-        {% if transforms | length %}
-            <picture>
-                <source
-                    sizes="{{ opts.sizes }}"
-                    srcset="{{ craft.imagerx.srcset(webpTransforms) }}"
-                    type="image/webp"
-                >
+            {# Generate blurhash placeholder from smallest transform #}
+            {% set placeholderUrl = null %}
+            {% if opts.blurhash and opts.lazy and transforms | length %}
+                {% set placeholderUrl = craft.imagerx.placeholder({
+                    type: 'blurhash',
+                    hash: transforms[0].getBlurhash(),
+                    width: 32,
+                    height: opts.ratio ? ((32 / opts.ratio) | round) : ((32 * image.height / image.width) | round),
+                }) %}
+            {% endif %}
 
-                <img
-                    class="{{ opts.imageClass }}"
-                    src="{{ transforms[0].url }}"
-                    srcset="{{ craft.imagerx.srcset(transforms) }}"
-                    sizes="{{ opts.sizes }}"
-                    {% if opts.lazy %}loading="lazy" decoding="async"{% else %}fetchpriority="high"{% endif %}
+            {% if transforms | length %}
+                <picture>
+                    {# AVIF — best compression, modern browsers #}
+                    <source
+                        sizes="{{ opts.sizes }}"
+                        srcset="{{ craft.imagerx.srcset(avifTransforms) }}"
+                        type="image/avif"
+                    >
+                    {# WebP — good compression, wide support #}
+                    <source
+                        sizes="{{ opts.sizes }}"
+                        srcset="{{ craft.imagerx.srcset(webpTransforms) }}"
+                        type="image/webp"
+                    >
+                    {# Fallback — original format #}
+                    <img
+                        class="{{ opts.imageClass }}"
+                        src="{{ transforms[0].url }}"
+                        srcset="{{ craft.imagerx.srcset(transforms) }}"
+                        sizes="{{ opts.sizes }}"
+                        {% if opts.lazy %}loading="lazy" decoding="async"{% else %}fetchpriority="high"{% endif %}
+                        {% if placeholderUrl %}data-blurhash style="background-image: url({{ placeholderUrl }}); background-size: cover;"{% endif %}
+                        width="{{ opts.ratio ? opts.widths | last : image.width }}"
+                        height="{{ opts.ratio ? ((opts.widths | last) / opts.ratio) | round : image.height }}"
+                        {{ _self.altText(image) }}
+                        {{ attr(opts.attrs) }}
+                    >
+                </picture>
+            {% endif %}
+        {% else %}
+            {# SVG / GIF pass-through #}
+            <img
+                class="{{ opts.imageClass }}"
+                src="{{ image.url }}"
+                {% if opts.lazy %}loading="lazy" decoding="async"{% endif %}
+                {% if image.extension != 'svg' %}
                     width="{{ image.width }}"
                     height="{{ image.height }}"
-                    {{ _self.altText(image) }}
-                    {{ attr(opts.attrs) }}
-                >
-            </picture>
+                {% endif %}
+                {{ _self.altText(image) }}
+                {{ attr(opts.attrs) }}
+            >
         {% endif %}
-    {% else %}
-        <img
-            class="{{ opts.imageClass }}"
-            src="{{ image.url }}"
-            {% if opts.lazy %}loading="lazy" decoding="async"{% endif %}
-            {% if image.extension != 'svg' %}
-                width="{{ image.width }}"
-                height="{{ image.height }}"
-            {% endif %}
-            {{ _self.altText(image) }}
-            {{ attr(opts.attrs) }}
-        >
-    {% endif %}
 
-    {% if opts.caption and image.caption %}
-        <figcaption>
-            {{ image.caption }}
-        </figcaption>
-    </figure>
+        {% if opts.caption and image.caption %}
+            <figcaption>{{ image.caption }}</figcaption>
+        </figure>
+        {% endif %}
     {% endif %}
 {% endmacro %}

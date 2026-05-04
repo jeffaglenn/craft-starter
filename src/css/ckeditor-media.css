@@ -1,0 +1,127 @@
+/*
+ * CKEditor rich-text media styles
+ * Targets the classes emitted by CKEditor's ImageStyle, ImageResize, and MediaEmbed plugins.
+ */
+
+figure.image {
+    @apply
+        table
+        clear-both
+        /* my-2 */
+        mx-auto;
+}
+
+figure.image img {
+    @apply
+        block
+        h-auto
+        max-w-full
+        mx-auto;
+}
+
+figure.image > figcaption {
+    @apply
+        text-1p2
+        p-p5
+        italic;
+}
+
+.image-inline {
+    @apply
+        inline-flex
+        items-start
+        max-w-full;
+}
+
+/* Wrap text — inline floats */
+figure.image.image-style-align-left {
+    @apply
+        float-left
+        mr-2;
+}
+
+figure.image.image-style-align-right {
+    @apply
+        float-right
+        ml-2;
+}
+
+/* Break text — block alignment */
+figure.image.image-style-block-align-left {
+    @apply
+        ml-0
+        mr-auto
+        max-w-[calc(100%-2rem)];
+}
+
+figure.image.image-style-block-align-right {
+    @apply
+        ml-auto
+        mr-0
+        max-w-[calc(100%-2rem)];
+}
+
+figure.image.image-style-align-center {
+    @apply
+        mx-auto;
+}
+
+/* Side — pulled aside */
+figure.image.image-style-side {
+    @apply
+        float-right
+        max-w-[50%]
+        ml-2;
+}
+
+/* ImageResize feature — preserve the inline width set by the editor */
+figure.image.image_resized {
+    @apply
+        block
+        box-border
+        max-w-full;
+}
+
+figure.image.image_resized img {
+    @apply
+        w-full;
+}
+
+/* Avoid stacking float margins under a preceding paragraph */
+p + figure.image.image-style-align-left,
+p + figure.image.image-style-align-right,
+p + figure.image.image-style-side {
+    @apply mt-0;
+}
+
+/* MediaEmbed feature — figure.media wraps oEmbed iframes */
+figure.media {
+    @apply
+        block
+        w-full
+        max-w-full
+        my-2
+        mx-auto;
+}
+
+figure.media iframe {
+    @apply
+        block
+        w-full
+        h-auto
+        aspect-video;
+}
+
+/* Portrait embeds — set by media-embeds.js when iframe height > width */
+figure.media.media-portrait {
+    @apply
+        max-w-[40rem];
+}
+
+figure.media > figcaption {
+    @apply
+        text-1p2
+        p-p5
+        italic
+        text-center;
+}

@@ -1,0 +1,96 @@
+{% if pageInfo is defined and pageInfo.totalPages > 1 %}
+
+{% set buttonBaseClasses = "flex items-center gap-1 no-underline py-1 px-2 rounded-full ring-1 ring-transparent hover:ring-slate-400 transition-colors" %}
+{% set buttonActiveClasses = "bg-slate-100 text-slate-900" %}
+{% set buttonDisabledClasses = "text-slate-300 cursor-not-allowed" %}
+{% set labelClasses = "hidden sm:inline-block" %}
+{% set iconClasses = "size-[1.2rem]" %}
+{% set selectClasses = "block appearance-none w-full bg-slate-100 rounded-full border-none pl-[1.5rem] focus:outline-none focus:ring-1 focus:ring-slate-400" %}
+{% set paginationScrollTarget = paginationScrollTarget ?? '#blog-list' %}
+{% set paginationScrollHandler = "var target = document.querySelector('" ~ paginationScrollTarget|e('js') ~ "'); if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }" %}
+
+<nav class="py-4 text-center" role="navigation" aria-label="Pagination">
+    <div class="flex justify-between items-center font-bold text-1p4">
+
+        {# Previous #}
+        {% if pageInfo.prevUrl %}
+        <a class="{{ buttonBaseClasses }} {{ buttonActiveClasses }}"
+           sprig
+           s-val:page="{{ pageInfo.currentPage - 1 }}"
+           s-on::before-request="{{ paginationScrollHandler }}"
+           href
+           aria-label="Go to previous page">
+            <svg class="{{ iconClasses }} rotate-90" aria-hidden="true" focusable="false">
+                <use href="#chevron"/>
+            </svg>
+            <span class="{{ labelClasses }}">Previous</span>
+        </a>
+        {% else %}
+        <span class="{{ buttonBaseClasses }} {{ buttonDisabledClasses }}"
+              role="button"
+              aria-label="Previous page (disabled)"
+              aria-disabled="true"
+              tabindex="-1">
+            <svg class="{{ iconClasses }} rotate-90" aria-hidden="true" focusable="false">
+                <use href="#chevron"/>
+            </svg>
+            <span class="{{ labelClasses }}">Previous</span>
+        </span>
+        {% endif %}
+
+        {# Page selector #}
+        <div class="flex items-center gap-p5" role="group" aria-label="Page navigation">
+            <label for="page-selector" class="sr-only">Page</label>
+            <span aria-hidden="true">Page</span>
+            <div class="relative">
+                <select id="page-selector"
+                        class="{{ selectClasses }}"
+                        sprig
+                        s-trigger="change"
+                        s-on::before-request="{{ paginationScrollHandler }}"
+                        name="page"
+                        aria-label="Select page number"
+                        aria-describedby="page-info">
+                    {% for p in 1..pageInfo.totalPages %}
+                        <option value="{{ p }}"
+                                {% if pageInfo.currentPage == p %}selected{% endif %}
+                                aria-label="Page {{ p }}">
+                            {{ p }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <span id="page-info" aria-hidden="true">of {{ pageInfo.totalPages }}</span>
+            <span class="sr-only">Page {{ pageInfo.currentPage }} of {{ pageInfo.totalPages }}</span>
+        </div>
+
+        {# Next #}
+        {% if pageInfo.nextUrl %}
+        <a class="{{ buttonBaseClasses }} {{ buttonActiveClasses }}"
+           sprig
+           s-val:page="{{ pageInfo.currentPage + 1 }}"
+           s-on::before-request="{{ paginationScrollHandler }}"
+           href
+           aria-label="Go to next page">
+            <span class="{{ labelClasses }}">Next</span>
+            <svg class="{{ iconClasses }} -rotate-90" aria-hidden="true" focusable="false">
+                <use href="#chevron"/>
+            </svg>
+        </a>
+        {% else %}
+        <span class="{{ buttonBaseClasses }} {{ buttonDisabledClasses }}"
+              role="button"
+              aria-label="Next page (disabled)"
+              aria-disabled="true"
+              tabindex="-1">
+            <span class="{{ labelClasses }}">Next</span>
+            <svg class="{{ iconClasses }} -rotate-90" aria-hidden="true" focusable="false">
+                <use href="#chevron"/>
+            </svg>
+        </span>
+        {% endif %}
+
+    </div>
+</nav>
+
+{% endif %}

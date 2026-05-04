@@ -3,7 +3,7 @@ TEMPLATE SETTINGS
 ######################}
 
 {% set blockVars = {
-    text           : item.richText,
+    text: item.richText,
 } %}
 
 {######################
@@ -11,5 +11,5 @@ END TEMPLATE SETTINGS
 ######################}
 
 {% block content %}
-    {% include "_components/_sections/rich-text" with blockVars %}
+    {% include "_components/_sections/rich-text-section" with blockVars %}
 {% endblock %}

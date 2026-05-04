@@ -10,16 +10,22 @@ return [
     // Allow upscaling of images
     'allowUpscale' => false,
 
+    'imagerSystemPath' => '@webroot/uploads/imager/',
+    'imagerUrl' => '@web/uploads/imager/',
+
     // Image quality defaults
     'jpegQuality' => 80,
     'webpQuality' => 80,
     'pngCompressionLevel' => 5,
 
     // Interlace images for progressive loading
-    'interlace' => true,
+    'interlace' => 'line',
 
     // Remove metadata from images
     'removeMetadata' => true,
+
+    // Remove orphaned transforms
+    'removeTransforms' => true,
 
     // Cache settings
     'cacheDuration' => 31536000, // 1 year

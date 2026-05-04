@@ -22,17 +22,31 @@ in craft.formie.renderForm() or config/formie.php.
         --fui-border-radius: 0.5rem;
         --fui-field-gutter: 1.5rem;
 
+        /* Field - Group */
+        --fui-group-padding: 1rem;
+        /* --fui-group-border */
+        /* --fui-group-border-radius */
+
         /* Inputs */
         --fui-input-font-size: var(--text-1p6);
-        --fui-input-border: 1px solid var(--color-gray-300, #d1d5db);
+        --fui-input-border: 1px solid var(--color-gray-300);
         --fui-input-padding: 0.75rem 1rem;
-        --fui-input-placeholder-color: var(--color-gray-400, #9ca3af);
-        --fui-focus-border-color: var(--color-black);
+        --fui-input-placeholder-color: var(--color-gray-400);
+        --fui-focus-border-color: var(--color-gray-500);
         --fui-focus-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+
+        /* Field - Select */
+        /* --fui-select-option-padding: 0.1rem 0.4rem;
+        --fui-select-padding-right: 2rem;
+        --fui-select-bg-position: right 0.25rem center;
+        --fui-select-bg-size: 1.5em 1.5em;
+        --fui-select-bg-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%239fa6b2' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); */
 
         /* Labels */
         --fui-label-color: var(--color-black);
         --fui-label-font-size: var(--text-1p4);
+        --fui-label-font-weight: 800;
+        --fui-label-margin: 0.5rem;
 
         /* Error messages */
         --fui-error-font-size: var(--text-1p2);
@@ -44,8 +58,7 @@ in craft.formie.renderForm() or config/formie.php.
         --fui-check-label-height: 20px;
         --fui-check-margin-right: 1rem;
         --fui-check-label-padding-left: 25px;
-        --fui-check-bg-color-checked: var(--color-white);
-        --fui-check-border-color-checked: var(--color-black);
+        --fui-check-bg-color-checked: var(--color-black);
         --fui-check-check-bg-size: 10px auto;
         --fui-check-check-border-radius: 0;
         --fui-check-label-top: 0.25rem;
@@ -80,33 +93,6 @@ in craft.formie.renderForm() or config/formie.php.
         --fui-group-border: none;
     }
 }
-
-/* Form base */
-.fui-form {
-    @apply font-normal;
-}
-
-/* Labels */
-.fui-label,
-.fui-legend {
-    @apply font-medium;
-}
-
-/* Submit button hover */
-.fui-btn {
-    @apply transition-colors;
-}
-
-/* Agree field (terms & conditions checkbox) */
-.fui-type-agree .fui-checkbox {
-    font-size: var(--text-1p4);
-}
-
-/* Groups */
-.fui-group {
-    @apply bg-black/5;
-}
-
 
 /*----------------------------------------------
 Dark form variant

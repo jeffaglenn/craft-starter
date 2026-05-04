@@ -1,0 +1,52 @@
+{######################
+TEMPLATE OPTIONS
+######################}
+
+{# Import Macros #}
+{% import '_macros/typography' as typography %}
+
+{######################
+END TEMPLATE SETTINGS
+######################}
+
+{% set uid = 'read-more-' ~ random() %}
+
+<div
+    x-data="{ open: false }"
+>
+    {# Content #}
+    <div
+        x-show="open"
+        x-collapse
+        x-cloak
+        id="{{ uid }}"
+        role="region"
+        :aria-label="open ? 'Expanded content' : undefined"
+    >
+        <div class="mb-2">
+            {{ typography.richText(richText) }}
+        </div>
+    </div>
+
+    {# Button markup #}
+    <div class="relative flex items-center gap-2">
+        <span class="block w-full h-[1px] bg-current opacity-25" aria-hidden="true"></span>
+        <button
+            x-on:click="open = !open"
+            :aria-expanded="open.toString()"
+            aria-controls="{{ uid }}"
+            class="shrink-0 cursor-pointer relative z-10 flex items-center gap-p5 py-1 px-2 font-special-gothic tracking-widest font-medium uppercase text-1p2 leading-none rounded-full hover:bg-black/10"
+            :class="{ 'bg-black/10': open }"
+        >
+            <span x-text="open ? 'Collapse' : 'Read More'"></span>
+            <svg
+                class="relative fill-current size-[10px] transition-transform duration-300"
+                :class="{ 'rotate-180': open }"
+                aria-hidden="true"
+            >
+                <use href="#chevron"/>
+            </svg>
+        </button>
+        <span class="block w-full h-px bg-current opacity-25" aria-hidden="true"></span>
+    </div>
+</div>

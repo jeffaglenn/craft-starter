@@ -1,0 +1,76 @@
+{
+    "style": {
+      "definitions": [
+        {
+          "name": "Small Heading",
+          "element": "p",
+          "classes": [
+            "small-heading"
+          ]
+        },
+        {
+          "name": "Small Text",
+          "element": "p",
+          "classes": [
+            "small-text"
+          ]
+        },
+        {
+          "name": "Columns (UL)",
+          "element": "ul",
+          "classes": [
+            "list-columns"
+          ]
+        },
+        {
+          "name": "Columns (OL)",
+          "element": "ol",
+          "classes": [
+            "list-columns"
+          ]
+        }
+      ]
+    },
+    "link": {
+      "addTargetToExternalLinks": true
+    },
+    "list": {
+      "properties": {
+        "styles": false
+      }
+    },
+    "alignment": {
+      "options": [
+        "left",
+        "center"
+      ]
+    },
+    "fullscreen": {
+      "menuBar": {
+        "isVisible": false
+      }
+    },
+    "image": {
+      "styles": {
+        "options": [
+          "inline",
+          "alignLeft",
+          "alignRight",
+          "alignCenter",
+          "alignBlockLeft",
+          "alignBlockRight",
+          "block",
+          "side"
+        ]
+      },
+      "toolbar": [
+        "imageStyle:wrapText",
+        "imageStyle:breakText",
+        "|",
+        "toggleImageCaption",
+        "imageTextAlternative",
+        "|",
+        "imageEditor"
+      ]
+    }
+  }

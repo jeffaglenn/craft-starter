@@ -1,5 +1,6 @@
 /* Import Tailwind pointing the source at the directory root */
 @import 'tailwindcss' source('../../');
+@plugin "@tailwindcss/forms";
 
 /* Tailwind variable overrides */
 @import './defaults.css';
@@ -7,4 +8,6 @@
 /* Starts custom CSS */
 @import './base.css';
 @import './buttons.css';
+@import './typography.css';
 @import './forms.css';
+@import './ckeditor-media.css';

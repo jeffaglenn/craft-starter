@@ -1,0 +1,24 @@
+/* Typography styles */
+h1, h2, h3, h4, h5, h6 {
+    @apply
+        /* font-mulish */
+        font-bold
+        text-balance
+        leading-none;
+}
+
+.small-heading {
+    @apply
+        /* font-special-gothic */
+        uppercase
+        text-1p2
+        tracking-widest
+        leading-snug
+        opacity-80;
+}
+
+.small-text{
+    @apply
+        text-[0.7em]
+        opacity-60;
+}
