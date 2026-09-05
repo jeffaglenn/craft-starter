@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "90229f2f00135f64b0d3b24ee762eec3",
+    "content-hash": "b46b5f912d9ec4d25f8064cee803f3c3",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -500,16 +500,16 @@
         },
         {
             "name": "craftcms/ckeditor",
-            "version": "5.5.0",
+            "version": "5.7.0",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/ckeditor/zipball/743a4e1bccd3c98eb544b4730dd6689ca03ab4af",
-                "reference": "743a4e1bccd3c98eb544b4730dd6689ca03ab4af",
+                "url": "https://api.github.com/repos/craftcms/ckeditor/zipball/8d33b8aad2fcebaf5df9a81f5b405127b12fd881",
+                "reference": "8d33b8aad2fcebaf5df9a81f5b405127b12fd881",
                 "shasum": ""
             },
             "require": {
-                "craftcms/cms": "^5.9.0",
-                "craftcms/html-field": "^3.5.0",
+                "craftcms/cms": "^5.10.0",
+                "craftcms/html-field": "^3.6.0",
                 "embed/embed": "^4.4",
                 "nystudio107/craft-code-editor": ">=1.0.8 <=1.0.13 || ^1.0.16",
                 "php": "^8.2"
@@ -549,7 +549,7 @@
                 "docs": "https://github.com/craftcms/ckeditor/blob/5.x/README.md",
                 "rss": "https://github.com/craftcms/ckeditor/commits/5.x.atom"
             },
-            "time": "2026-04-27T23:04:54+00:00"
+            "time": "2026-08-10T20:50:33+00:00"
         },
         {
             "name": "craftcms/cms",
@@ -661,11 +661,11 @@
         },
         {
             "name": "craftcms/html-field",
-            "version": "3.5.1",
+            "version": "3.6.0",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/html-field/zipball/b4e1ae3f020d6081cfe3abf653f663da744c4cec",
-                "reference": "b4e1ae3f020d6081cfe3abf653f663da744c4cec",
+                "url": "https://api.github.com/repos/craftcms/html-field/zipball/8639205370ca671662fdd421ec1df5051d4f179d",
+                "reference": "8639205370ca671662fdd421ec1df5051d4f179d",
                 "shasum": ""
             },
             "require": {
@@ -698,7 +698,7 @@
                 "docs": "https://github.com/craftcms/html-field/blob/main/README.md",
                 "rss": "https://github.com/craftcms/html-field/commits/main.atom"
             },
-            "time": "2026-03-19T18:11:31+00:00"
+            "time": "2026-08-10T15:57:06+00:00"
         },
         {
             "name": "craftcms/mailgun",
@@ -11579,13 +11579,13 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
+    "platform": {},
+    "platform-dev": {},
     "platform-overrides": {
         "php": "8.5"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }
